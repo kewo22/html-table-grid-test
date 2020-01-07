@@ -1,0 +1,41 @@
+import { Component } from "@angular/core";
+
+@Component({
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent {
+  name = "Angular";
+
+  prevEl: HTMLElement;
+
+  rowFirstCellClick(e): void {
+    // console.log(e.target);
+    let currentEl: HTMLElement = (e.target as HTMLElement)
+      .parentElement as HTMLElement;
+
+    if (this.prevEl && currentEl) {
+      if (
+        this.prevEl.getAttribute("class") === currentEl.getAttribute("class")
+      ) {
+        currentEl.style.backgroundColor = "";
+        this.prevEl.style.backgroundColor = "";
+        this.prevEl = null;
+        return;
+      }
+    }
+
+    if (this.prevEl) {
+      console.log("t");
+      this.prevEl.style.backgroundColor = "";
+      currentEl.style.backgroundColor = "blue";
+      this.prevEl = currentEl;
+      // this.prevEl = undefined;
+    } else {
+      console.log("f");
+      currentEl.style.backgroundColor = "blue";
+      this.prevEl = currentEl;
+    }
+  }
+}
