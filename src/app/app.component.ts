@@ -11,7 +11,6 @@ export class AppComponent {
   prevEl: HTMLElement;
 
   rowFirstCellClick(e): void {
-    // console.log(e.target);
     let currentEl: HTMLElement = (e.target as HTMLElement)
       .parentElement as HTMLElement;
 
@@ -27,13 +26,10 @@ export class AppComponent {
     }
 
     if (this.prevEl) {
-      console.log("t");
       this.prevEl.style.backgroundColor = "";
       currentEl.style.backgroundColor = "blue";
       this.prevEl = currentEl;
-      // this.prevEl = undefined;
     } else {
-      console.log("f");
       currentEl.style.backgroundColor = "blue";
       this.prevEl = currentEl;
     }
